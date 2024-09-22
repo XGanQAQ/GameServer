@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameServer.script.logic
 {
-    internal class EventHandler
+    public class EventHandler
     {
     }
 }
