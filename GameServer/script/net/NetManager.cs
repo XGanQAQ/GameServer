@@ -20,6 +20,9 @@ namespace GameServer.script.net
 
         //Select的检查列表
         static List<Socket> checkRead = new List<Socket>();
+        //ping 间隔
+        public static long pingInterval = 30;
+        
 
         public static void StartLoop(int listenPort)
         {
@@ -180,7 +183,7 @@ namespace GameServer.script.net
             }
             else
             {
-                Console.WriteLine("OnReceiveData Invoke fail" + protoName);
+                Console.WriteLine("OnReceiveData Invoke fail " + protoName);
                 
             }
             //继续读取消息
@@ -224,6 +227,12 @@ namespace GameServer.script.net
             //关闭
             state.socket.Close();
             clients.Remove(listenfd);
+        }
+
+        public static long GetTimeStamp()
+        {
+            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            return Convert.ToInt64(ts.TotalSeconds);
         }
     }
 }

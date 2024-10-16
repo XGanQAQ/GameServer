@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GameServer.script.db;
+using GameServer.script.net;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,23 +12,11 @@ namespace GameServer
     {
         static void Main(string[] args)
         {
-            MsgMove msgMove = new MsgMove();
-            msgMove.x = 100;
-            msgMove.y = -20;
+            //连接数据库
+            if (!DbManager.Connect("localhost", "game", "czg", "1246652674Aa@")) { return; }
+            if(DbManager.Register("cyk", "123456")) Console.WriteLine("注册成功");
 
-            byte[] bytes = MsgBase.Encode(msgMove);
-
-            string s = Encoding.UTF8.GetString(bytes);
-
-            Console.WriteLine(s);
-
-            byte[] bytess = Encoding.UTF8.GetBytes(s);
-
-            MsgMove m = (MsgMove)MsgBase.Decode("MsgMove", bytess,0, bytess.Length);
-            Console.WriteLine(m.x);
-            Console.WriteLine(m.y);
-
-            Console.ReadLine();
+            NetManager.StartLoop(8888);
         }
     }
 }
