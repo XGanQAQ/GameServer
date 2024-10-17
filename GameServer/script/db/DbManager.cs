@@ -196,7 +196,7 @@ namespace GameServer.script.db
         {
             string data = Js.Serialize(playerData);
 
-            string sql = $"update player set data='{playerData}' where id='{id}';";
+            string sql = $"update player set data='{data}' where id='{id}';";
 
             try
             {

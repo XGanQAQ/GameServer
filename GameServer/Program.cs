@@ -1,4 +1,5 @@
 ﻿using GameServer.script.db;
+using GameServer.script.logic;
 using GameServer.script.net;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,11 @@ namespace GameServer
         {
             //连接数据库
             if (!DbManager.Connect("localhost", "game", "czg", "1246652674Aa@")) { return; }
-            if(DbManager.Register("cyk", "123456")) Console.WriteLine("注册成功");
+            //if(DbManager.Register("cyk", "123456")) Console.WriteLine("注册成功");
+            DbManager.CreatePlayer("testPlayer");
+            PlayerData player = DbManager.GetPlayerData("testPlayer");
+            player.coin = 233;
+            DbManager.UpdatePlayerData("testPlayer",player);
 
             NetManager.StartLoop(8888);
         }
