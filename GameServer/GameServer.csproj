@@ -54,6 +54,8 @@
     <Compile Include="script\db\DbManager.cs" />
     <Compile Include="script\logic\BattleMsgHandler.cs" />
     <Compile Include="script\logic\EventHandler.cs" />
+    <Compile Include="script\logic\LoginMsgHandle.cs" />
+    <Compile Include="script\logic\NotepadMsgHandle.cs" />
     <Compile Include="script\logic\Player.cs" />
     <Compile Include="script\logic\PlayerData.cs" />
     <Compile Include="script\logic\PlayerManager.cs" />
@@ -63,6 +65,8 @@
     <Compile Include="script\net\MsgBase.cs" />
     <Compile Include="script\net\NetManager.cs" />
     <Compile Include="script\proto\BattleMsg.cs" />
+    <Compile Include="script\proto\LoginMsg.cs" />
+    <Compile Include="script\proto\NotepadMsg.cs" />
     <Compile Include="script\proto\SysMsg.cs" />
   </ItemGroup>
   <ItemGroup>

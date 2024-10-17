@@ -1,9 +1,5 @@
 ﻿using GameServer.script.net;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameServer.script.logic
 {
@@ -21,7 +17,7 @@ namespace GameServer.script.logic
         {
             Console.WriteLine("MsgPing");
             c.lastPingTime = NetManager.GetTimeStamp();
-            SysMsg.MsgPong msgPong = new SysMsg.MsgPong();
+            MsgPong msgPong = new MsgPong();
             NetManager.Send(c, msgPong);
         }
     }

@@ -1,9 +1,6 @@
-﻿using GameServer.script.net;
+﻿using GameServer.script.db;
+using GameServer.script.net;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameServer.script.logic
 {
@@ -12,8 +9,17 @@ namespace GameServer.script.logic
         public static void OnDisconnect(ClientState c)
         {
             Console.WriteLine("close");
+            //Player下线
+            if (c.player != null)
+            {
+                //保存数据
+                DbManager.UpdatePlayerData(c.player.id, c.player.data);
+                //移除
+                PlayerManager.RemovePlayer(c.player.id);
+            }
         }
-        public static void OnTimer() {
+        public static void OnTimer()
+        {
             CheckPing();
         }
 
