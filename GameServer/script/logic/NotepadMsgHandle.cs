@@ -1,5 +1,4 @@
-﻿using GameServer.script.logic;
-using GameServer.script.net;
+﻿
 using System;
 
 public partial class MsgHandler
@@ -23,6 +22,7 @@ public partial class MsgHandler
         if (player == null) return;
         //获取 text
         player.data.text = msg.text;
+        DbManager.UpdatePlayerData(player.id, player.data);
         player.Send(msg);
     }
 }

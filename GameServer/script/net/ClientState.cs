@@ -1,21 +1,13 @@
-﻿using GameServer.script.logic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Media;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net.Sockets;
 
-namespace GameServer.script.net
+
+public class ClientState
 {
-    public class ClientState
-    {
-        public Socket socket;
-        public ByteArray readBuff = new ByteArray();
-        //Ping
-        public long lastPingTime = 0;
-        //玩家
-        public Player player;
-    }
+    public Socket socket;
+    public ByteArray readBuff = new ByteArray();
+    //Ping
+    public long lastPingTime = NetManager.GetTimeStamp(); //怎加了一个初始时间戳
+    //玩家
+    public Player player;
 }
+
